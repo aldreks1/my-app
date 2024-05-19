@@ -1,12 +1,6 @@
 <template>
-  <div class="login">
-    <header>
-      <nav>
-        <router-link to="/">Home</router-link>
-        <router-link to="/users">Users</router-link>
-        <router-link to="/profile">Profile</router-link>
-      </nav>
-    </header>
+  <div class="login wrapper">
+    <HeaderComponent />
     <main>
       <h1>Login</h1>
       <form @submit.prevent="login">
@@ -22,14 +16,20 @@
         <div v-if="error" class="error">{{ error }}</div>
       </form>
     </main>
+    <FooterComponent />
   </div>
 </template>
 
 <script>
 import axios from "axios";
-
+import HeaderComponent from "@/components/Header";
+import FooterComponent from "@/components/Footer";
 export default {
   name: "LoginPage",
+  components: {
+    HeaderComponent,
+    FooterComponent,
+  },
   data() {
     return {
       username: "",

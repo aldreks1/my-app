@@ -1,12 +1,6 @@
 <template>
-  <div class="profile">
-    <header>
-      <nav>
-        <router-link to="/">Home</router-link>
-        <router-link to="/users">Users</router-link>
-        <router-link to="/profile">Profile</router-link>
-      </nav>
-    </header>
+  <div class="profile wrapper">
+    <HeaderComponent />
     <main>
       <h1>Profile</h1>
       <div v-if="user">
@@ -15,14 +9,21 @@
         <p>{{ user.email }}</p>
       </div>
     </main>
+    <FooterComponent />
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import HeaderComponent from "@/components/Header";
+import FooterComponent from "@/components/Footer";
 
 export default {
   name: "ProfilePage",
+  components: {
+    HeaderComponent,
+    FooterComponent,
+  },
   data() {
     return {
       user: null,
