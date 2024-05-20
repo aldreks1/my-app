@@ -21,16 +21,19 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 68px;
   margin-bottom: 36px;
   width: 100%;
 }
 footer div {
   display: flex;
-  gap: 10px;
+  gap: 35px;
 }
 footer div a img {
   width: 30px;
   height: 30px;
+}
+footer p {
+  font-size: 14px;
 }
 </style>

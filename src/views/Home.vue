@@ -1,6 +1,5 @@
 <template>
-  <div class="home wrapper">
-    <HeaderComponent />
+  <div class="home">
     <main>
       <div class="welcome">
         <h1>Home page</h1>
@@ -15,20 +14,12 @@
       </div>
       <img src="@/assets/tools.png" alt="Welcome Image" />
     </main>
-    <FooterComponent />
   </div>
 </template>
 
 <script>
-import HeaderComponent from "@/components/Header";
-import FooterComponent from "@/components/Footer";
-
 export default {
   name: "HomePage",
-  components: {
-    HeaderComponent,
-    FooterComponent,
-  },
 };
 </script>
 
@@ -36,18 +27,33 @@ export default {
 .welcome {
   width: 500px;
 }
+h1 {
+  font-size: 44px;
+}
 main {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: self-start;
 }
+main div p {
+  margin-bottom: 42px;
+}
 button {
   background-color: rgba(255, 100, 100, 1);
   color: white;
-  padding: 10px 20px;
+  padding: 10px 40px;
   border: none;
   cursor: pointer;
+  font-size: 20px;
+  line-height: 1.5;
+  border-radius: 2px;
+}
+button:hover {
+  background-color: rgba(255, 87, 87, 1);
+}
+button:active {
+  background-color: rgba(255, 59, 59, 1);
 }
 img {
   max-width: 100%; /* ограничение по ширине */

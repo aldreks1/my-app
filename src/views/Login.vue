@@ -1,35 +1,30 @@
 <template>
-  <div class="login wrapper">
-    <HeaderComponent />
-    <main>
-      <h1>Login</h1>
+  <div class="login-page">
+    <div class="login-container">
+      <div class="header">
+        <h2>Authorization</h2>
+        <span v-if="error" class="error-message">{{ error }}</span>
+      </div>
       <form @submit.prevent="login">
-        <div>
-          <label for="username">Username:</label>
-          <input type="text" v-model="username" required />
+        <div class="form-group">
+          <label for="username">Login</label>
+          <input type="text" id="username" v-model="username" required />
         </div>
-        <div>
-          <label for="password">Password:</label>
-          <input type="password" v-model="password" required />
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" v-model="password" required />
         </div>
-        <button type="submit">Login</button>
-        <div v-if="error" class="error">{{ error }}</div>
+        <button type="submit">Submit</button>
       </form>
-    </main>
-    <FooterComponent />
+    </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
-import HeaderComponent from "@/components/Header";
-import FooterComponent from "@/components/Footer";
+
 export default {
   name: "LoginPage",
-  components: {
-    HeaderComponent,
-    FooterComponent,
-  },
   data() {
     return {
       username: "",
@@ -48,9 +43,8 @@ export default {
           localStorage.setItem("token", response.data.token);
           this.$router.push({ name: "ProfilePage" });
         })
-        .catch((error) => {
-          console.error("Login error:", error);
-          this.error = "Failed to login. Please check your credentials.";
+        .catch(() => {
+          this.error = "Invalid credentials";
         });
     },
   },
@@ -58,21 +52,73 @@ export default {
 </script>
 
 <style scoped>
-header nav {
+.login-page {
+  font-family: Roboto, sans-serif;
   display: flex;
-  justify-content: space-around;
+
+  justify-content: center;
+  align-items: center;
 }
-main {
-  text-align: center;
+
+.login-container {
+  border-radius: 10px;
+  box-shadow: 0px 2.75px 9px 0px rgba(0, 0, 0, 0.19);
+  padding: 16px;
+  max-width: 335px;
+  width: 100%;
 }
-button {
-  background-color: #ff5733;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
+
+.header {
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 26px;
 }
-.error {
+
+h2 {
+  margin: 0;
+  font-size: 16px;
+}
+.error-message {
   color: red;
+  font-size: 16px;
+}
+
+form {
+  color: rgba(0, 0, 0, 0.6);
+  width: 152px;
+  margin: 0 auto;
+}
+
+.form-group {
+  font-size: 14px;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+label {
+  font-size: 14px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+input {
+  box-shadow: 0px 2.75px 9px 0px rgba(0, 0, 0, 0.19);
+  height: 29px;
+  width: 152px;
+  padding: 8px;
+  border: none;
+  border-radius: 10px;
+}
+
+button {
+  width: 100%;
+  color: rgba(0, 0, 0, 0.6);
+  background-color: white;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 43px;
 }
 </style>

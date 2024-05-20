@@ -15,21 +15,35 @@ export default {
 </script>
 
 <style scoped>
-header{
+header {
   margin-bottom: 73px;
 }
 header nav {
   display: flex;
-  justify-content: space-around;
-  background-color: #f8f9fa;
-  padding: 10px;
+  justify-content: end;
+  margin-top: 27px;
 }
 header nav a {
-  margin: 0 15px;
+  position: relative;
+  margin: 0 30px;
   text-decoration: none;
   color: #000;
-}
-header nav a.router-link-exact-active {
   font-weight: bold;
+  font-size: 20px;
+}
+header nav a:after {
+
+  display: block;
+  position: absolute;
+  left: 0; /*изменить на right:0;, чтобы изменить направление подчёркивания */
+  width: 0; /*задаём длинну линии до наведения курсора*/
+  height: 2px; /*задаём ширину линии*/
+  background-color: rgba(255, 100, 100, 1); /*задаём цвет линии*/
+  content: "";
+  transition: width 0.3s ease-out; /*задаём время анимации*/
+}
+header nav a:hover:after,
+header nav a.router-link-exact-active:after {
+  width: 100%; /*устанавливаем значение 100% чтобы ссылка подчёркивалась полностью*/
 }
 </style>
